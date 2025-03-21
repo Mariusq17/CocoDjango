@@ -1,0 +1,21 @@
+{% extends "mainApp/formPageTemplate.html" %}
+
+{% block content %}
+  <div class="container">
+      <form method="POST" action="{% url 'form2'  %}" class="stepForm">
+           {% csrf_token %}
+          <h2>
+      Completați toate câmpurile obligatorii cu informații corecte și asigurați-vă că datele introduse sunt conforme cu documentele oficiale.
+    </h2>
+    <hr>
+        <ul>
+            {% for question, answers in questions_with_answers %}
+                {% if question.step == 1 %}
+                    {% include "mainApp/checkbox.html" with q=question ans=answers %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+          <input type="submit" value="Next Page"></input>
+      </form>
+  </div>
+{% endblock %}

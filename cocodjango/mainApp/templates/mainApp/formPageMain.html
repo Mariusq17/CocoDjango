@@ -1,0 +1,28 @@
+{% extends "mainApp/formPageTemplate.html" %}
+
+{% block content %}
+  <div class="container">
+    <p>
+      Bun venit! Vă rugăm să completați acest formular cu atenție, furnizând informații corecte și actualizate. Datele pe care le introduceți sunt esențiale pentru procesul nostru și ne ajută să vă cunoaștem mai bine. Asigurăm că toate informațiile cu caracter personal vor fi prelucrate în conformitate cu reglementările privind protecția datelor și vor fi utilizate exclusiv în scopurile specificate.
+    </p>
+    <p>
+      Confidențialitatea și securitatea datelor dumneavoastră sunt o prioritate pentru noi. Formularul este protejat, iar accesul la informațiile completate este limitat doar persoanelor autorizate.
+    </p>
+    <hr>
+    <p>
+      Completați toate câmpurile obligatorii cu informații corecte și asigurați-vă că datele introduse sunt conforme cu documentele oficiale.
+    </p>
+    <hr>
+    <form action="{% url 'form1' %}">
+        <label>
+          Nume si prenume:
+          <input type="text">
+        </label>
+        <label>
+          Email:
+          <input type="email">
+        </label>
+      <input type="submit" value="Next Page">
+    </form>
+  </div>
+{% endblock %}

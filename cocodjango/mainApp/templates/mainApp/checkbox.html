@@ -1,0 +1,29 @@
+<div>
+    <h3>{{ q.text }}</h3>
+    <ul>
+        {% for answer in ans %}
+            {% if answer.tip_response == "checkbox" %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="{{q.id}}" value="{{ answer.text }}">
+                        {{ answer.text }}
+                    </label>
+                </li>
+            {% elif answer.tip_response == "radio" %}
+                <li>
+                    <label>
+                        <input type="radio" name="{{q.id}}" value="{{ answer.text }}">
+                        {{ answer.text }}
+                    </label>
+                </li>
+            {% elif answer.tip_response == "selectable" %}
+                <li>
+                    <label>
+                        <input type="radio" name="{{q.id}}" value="{{ answer.text }}">
+                        {{ answer.text }}
+                    </label>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
