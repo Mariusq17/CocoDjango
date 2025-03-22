@@ -1,10 +1,14 @@
 from contextlib import nullcontext
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
+    email = request.session.get('user_email')
+    if email:
+        return redirect(f'{reverse("controlPanel")}')
     return render(request, "initialState/landing.html", {})
 
 def formMain(request):
