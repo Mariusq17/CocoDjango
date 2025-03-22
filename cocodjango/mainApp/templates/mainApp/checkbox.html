@@ -1,29 +1,29 @@
-<div>
-    <h3>{{ q.text }}</h3>
-    <ul>
+<div class="card p-3 gy-3 d-flex flex-column">
+    <div class="card-body">
+        <h3 class="card-title">{{ q.text }}</h3>
         {% for answer in ans %}
             {% if answer.tip_response == "checkbox" %}
-                <li>
-                    <label>
-                        <input type="checkbox" name="{{q.id}}" value="{{ answer.text }}">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" name="{{q.id}}" value="{{ answer.text }}" class="form-check-input">
                         {{ answer.text }}
                     </label>
-                </li>
+                </div>
             {% elif answer.tip_response == "radio" %}
-                <li>
-                    <label>
-                        <input type="radio" name="{{q.id}}" value="{{ answer.text }}">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" name="{{q.id}}" value="{{ answer.text }}" class="form-check-input">
                         {{ answer.text }}
                     </label>
-                </li>
+                </div>
             {% elif answer.tip_response == "selectable" %}
-                <li>
-                    <label>
-                        <input type="radio" name="{{q.id}}" value="{{ answer.text }}">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" name="{{q.id}}" value="{{ answer.text }}" class="form-check-input">
                         {{ answer.text }}
                     </label>
-                </li>
+                </div>
             {% endif %}
         {% endfor %}
-    </ul>
+    </div>
 </div>
