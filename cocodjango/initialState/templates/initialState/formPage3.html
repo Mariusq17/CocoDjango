@@ -1,0 +1,17 @@
+{% extends "initialState/formPageTemplate.html" %}
+
+{% block content %}
+  <div class="container">
+      <form action="{% url 'home'  %}" class="d-flex flex-column gap-3">
+          <h2>
+      Completați toate câmpurile obligatorii cu informații corecte și asigurați-vă că datele introduse sunt conforme cu documentele oficiale.
+    </h2>
+            {% for question, answers in questions_with_answers %}
+                {% if question.step == 3 %}
+                    {% include "mainApp/checkbox.html" with q=question ans=answers %}
+                {% endif %}
+            {% endfor %}
+          <input class="btn btn-danger" type="submit" value="Submit Form"></input>
+      </form>
+  </div>
+{% endblock %}
