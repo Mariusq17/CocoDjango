@@ -4,12 +4,13 @@ from django.db.models import SET_NULL
 class Employee(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=25)
+    password = models.CharField(max_length=25, default="user1234")
     start_date = models.DateField(auto_now_add=True)
     position = models.CharField(max_length=50, default="Noob")
     my_buddy = models.ForeignKey('self', on_delete=SET_NULL, null=True, blank=True)
     available = models.BooleanField(default=False)
-    last_time_online = models.DateTimeField(auto_now=True, null=True)
+    # last_time_online = models.DateTimeField(auto_now=True, null=True)
+    last_time_online = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.name
