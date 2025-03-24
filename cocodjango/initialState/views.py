@@ -4,10 +4,13 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse
 
+from userApp.models import Employee
+
+
 # Create your views here.
 def home(request):
     email = request.session.get('user_email')
-    if email:
+    if email and Employee.objects.get(email=email).last_time_online is not None:
         return redirect(f'{reverse("controlPanel")}')
     return render(request, "initialState/landing.html", {})
 
