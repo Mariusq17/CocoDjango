@@ -6,9 +6,15 @@
 </head>
 <body>
     Hello {{ name }}
-    <form method="POST" action="{% url 'formPage' %}">
+    <form method="POST" action="">
         {% csrf_token %}
         <input type="submit" value="Log Out"/>
     </form>
+    {{ user.last_time_online }}
+    <script>
+        window.addEventListener("beforeunload", function() {
+            navigator.sendBeacon("{% url 'logoutUser' %}");
+        });
+    </script>
 </body>
 </html>
