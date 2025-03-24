@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CocoDjango SRL</title>
+</head>
+<body>
+    Hello {{ name }}
+    <form method="POST" action="{% url 'formPage' %}">
+        {% csrf_token %}
+        <input type="submit" value="Log Out"/>
+    </form>
+</body>
+</html>
