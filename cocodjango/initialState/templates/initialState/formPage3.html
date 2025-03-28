@@ -8,10 +8,10 @@
     </h2>
             {% for question, answers in questions_with_answers %}
                 {% if question.step == 3 %}
-                    {% include "mainApp/checkbox.html" with q=question ans=answers %}
+                    {% include "initialState/checkbox.html" with q=question ans=answers %}
                 {% endif %}
             {% endfor %}
-          <input class="btn btn-danger" type="submit" value="Submit Form"></input>
+          <input class="btn btn-danger" type="submit" value="Submit Form">
       </form>
   </div>
 {% endblock %}

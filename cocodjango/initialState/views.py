@@ -15,6 +15,8 @@ def home(request):
     return render(request, "initialState/landing.html", {})
 
 def formMain(request):
+    # if request.method == "POST":
+    #     return redirect("form1", request.)
     return render(request, "initialState/formPageMain.html")
 
 from .models import Question, Answer

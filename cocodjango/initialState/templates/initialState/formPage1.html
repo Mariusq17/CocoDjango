@@ -9,7 +9,7 @@
     </h2>
             {% for question, answers in questions_with_answers %}
                 {% if question.step == 1 %}
-                    {% include "mainApp/checkbox.html" with q=question ans=answers %}
+                    {% include "initialState/checkbox.html" with q=question ans=answers %}
                 {% endif %}
             {% endfor %}
           <input class="btn btn-primary" type="submit" value="Next Page"></input>
