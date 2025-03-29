@@ -12,13 +12,14 @@
     <p>
       Completați toate câmpurile obligatorii cu informații corecte și asigurați-vă că datele introduse sunt conforme cu documentele oficiale.
     </p>
-    <form novalidate action="{% url 'form1' %}" class="d-flex flex-column gap-3">
+    <form novalidate action="" class="d-flex flex-column gap-3" method="POST">
+        {% csrf_token %}
         <div class="form-floating">
-          <input type="text" class="form-control" id="name" placeholder="Enter your name..">
+          <input type="text" class="form-control" id="name" placeholder="Enter your name.." name="userName">
           <label for="name">Name</label>
         </div>
         <div class="form-floating">
-          <input type="email" class="form-control" id="email" placeholder="Enter your email..">
+          <input type="email" class="form-control" id="email" placeholder="Enter your email.." name="email">
           <label for="email">Email</label>
           <div class="invalid-feedback">Incorrect email</div>
           <div class="valid-feedback">Correct email</div>

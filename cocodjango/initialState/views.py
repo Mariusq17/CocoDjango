@@ -9,9 +9,9 @@ from userApp.models import Employee
 
 # Create your views here.
 def home(request):
-    email = request.session.get('user_email')
-    if email and Employee.objects.get(email=email).last_time_online is not None:
-        return redirect(f'{reverse("controlPanel")}')
+    # email = request.session.get('user_email')
+    # if email and Employee.objects.get(email=email).last_time_online is not None:
+    #     return redirect(f'{reverse("controlPanel")}')
     return render(request, "initialState/index.html", {})
 
 
@@ -24,6 +24,8 @@ def contact(request):
 
 
 def formMain(request):
+    # if request.method == "POST":
+    #     return redirect("form1", request.)
     return render(request, "initialState/formPageMain.html")
 
 

@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from .models import Employee
 
-
-
 def controlPanel(request):
     email = request.session.get('user_email')
     name = Employee.objects.get(email=email).name
