@@ -12,3 +12,20 @@ def controlPanel(request):
         "is_logged_in": is_logged_in
     }
     return render(request, 'userApp/controlPanel.html', context)
+
+from .forms import UpdateProfileForm
+def viewProfile(request):
+    user = Employee.objects.get(email=request.session.get('user_email'))
+    form = UpdateProfileForm(initial={
+        'name': user.name,
+        'email': user.email,
+        'password': '',  # Parola nu se pre-populează din motive de securitate
+        'available': user.available,
+        'start_date': user.start_date,
+        'position': user.position,
+        'my_buddy': user.my_buddy
+    })
+    context = {'form': form}
+    return render(request, 'userApp/viewProfile.html', context)
+
+

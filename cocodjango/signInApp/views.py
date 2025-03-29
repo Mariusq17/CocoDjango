@@ -57,7 +57,6 @@ def resetPasswordFormPage(request):
         return redirect("home")
     
     user = Employee.objects.get(email=email)
-
     my_form = ResetPasswordForm()
 
     if request.method == "POST":
@@ -70,6 +69,7 @@ def resetPasswordFormPage(request):
             else:
                 print("Parola salvata!")
                 user.password = password
+                user.last_time_online = datetime.datetime.now()
                 user.save()
                 return redirect("controlPanel")
             
