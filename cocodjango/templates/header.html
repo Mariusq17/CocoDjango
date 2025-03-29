@@ -1,0 +1,35 @@
+{% load static %}
+
+
+
+<div class="container-fluid">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 ps-5 pe-5 mb-4 border-bottom">
+    <div class="col-md-3 mb-2 mb-md-0">
+      <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+        <img src="{% static 'jpg/logo.png' %}" alt="Logo" width="48" height="48">
+      </a>
+    </div>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="/" class="nav-link px-2">Home</a></li>
+      <li><a href="/about" class="nav-link px-2">About</a></li>
+      <li><a href="/contact" class="nav-link px-2">Contact</a></li>
+      <li><a href="/form" class="nav-link px-2">Form</a></li>
+      {% if is_logged_in %}<li><a href="/dashboard" class="nav-link px-2">Dashboard</a></li>{% endif %}
+    </ul>
+
+    <div class="col-md-3 text-end">
+      <div class="d-flex align-items-center gap-2">
+        {% if is_logged_in %}
+        <div class="small">Hello, {{ name }}</div>
+        <form method="POST" action="{% url 'formPage' %}">
+          {% csrf_token %}
+          <input class="btn btn-outline-primary" type="submit" value="Log Out"></input>
+        </form>
+        {% else %}
+        <div class="small">Already a member?</div>
+        <a href="/signIn"><button class="btn btn-primary" type="button">Sign In</button></a>
+        {% endif %}
+      </div>
+  </header>
+</div>

@@ -1,9 +1,9 @@
 from contextlib import nullcontext
-
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse
 
+from .models import Question, Answer
 from userApp.models import Employee
 
 
@@ -12,14 +12,22 @@ def home(request):
     email = request.session.get('user_email')
     if email and Employee.objects.get(email=email).last_time_online is not None:
         return redirect(f'{reverse("controlPanel")}')
-    return render(request, "initialState/landing.html", {})
+    return render(request, "initialState/index.html", {})
+
+
+def about(request):
+    return render(request, "initialState/about.html")
+
+def contact(request):
+    return render(request, "initialState/contact.html")
+
+
 
 def formMain(request):
     # if request.method == "POST":
     #     return redirect("form1", request.)
     return render(request, "initialState/formPageMain.html")
 
-from .models import Question, Answer
 
 def form1(request):
     questions_with_answers = [

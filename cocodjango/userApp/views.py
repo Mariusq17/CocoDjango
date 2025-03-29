@@ -1,22 +1,16 @@
-from django.shortcuts import render, redirect
-
-# Create your views here.
-
+from django.shortcuts import render
 from .models import Employee
-import datetime
+
+
+
 def controlPanel(request):
     email = request.session.get('user_email')
+    name = Employee.objects.get(email=email).name
+    is_logged_in = True
 
-    if not email:
-        return redirect("home")
-
-    user = Employee.objects.get(email=email)
-
-    if request.method == "POST":
-        user.last_time_online = datetime.datetime.now()
-        user.save()
-        request.session.flush()
-        return redirect("home")
-    context = {"name": user.name, 'user': user}
+    context = {
+        "name": name,
+        "email": email,
+        "is_logged_in": is_logged_in
+    }
     return render(request, 'userApp/controlPanel.html', context)
-
