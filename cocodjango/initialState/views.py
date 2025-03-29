@@ -24,6 +24,8 @@ def contact(request):
 
 
 def formMain(request):
+    # if request.method == "POST":
+    #     return redirect("form1", request.)
     return render(request, "initialState/formPageMain.html")
 
 
