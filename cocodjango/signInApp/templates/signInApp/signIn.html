@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<h1 class="display-4 text-center">Reset Password</h1>
+<h1 class="display-4 text-center">SignIn</h1>
 <form method="POST" action="" novalidate class="d-flex flex-column gap-1 justify-center">
     {% csrf_token %}
     {% for field in form %}
@@ -12,8 +12,8 @@
         {{ field.label_tag }}
     </div>
     {% endfor %}
-    <input type="submit" value="Save" class="btn-primary btn"/>
-</form>
+    <input type="submit" value="Sign In" class="btn-primary btn"/>
+</form> 
 
 
 <script>

@@ -31,7 +31,7 @@ def formPage(request):
     context = {
         'form': my_form
     }
-    return render(request, "signInApp/signInPage.html", context)
+    return render(request, "signInApp/signIn.html", context)
 
 @csrf_exempt
 def update_last_online(request):
