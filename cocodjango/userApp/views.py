@@ -3,11 +3,20 @@ from .models import Employee
 
 def controlPanel(request):
     email = request.session.get('user_email')
-    name = Employee.objects.get(email=email).name
+    user = Employee.objects.get(email=email)
     is_logged_in = True
 
+    users = Employee.objects.all()
+
+    suma = 0
+    for user in users:
+        suma += user.salary
+
     context = {
-        "name": name,
+        "user": user,
+        "users": users,
+        "numOfEmployees": len(users),
+        "suma": suma,
         "email": email,
         "is_logged_in": is_logged_in
     }

@@ -1,0 +1,25 @@
+{% block employees %}
+<div class="container">
+    {% for user in users %}
+        <div class="row">
+            <span class="col">{{ user.name }}</span>
+            <strong class="col"><span>{{ user.salary }}</span></strong>
+            <span class="col">
+                {% if not user.my_buddy %}
+                    -
+                {% else %}
+                    {{ user.my_buddy }}
+                {% endif %}
+            </span>
+        </div>
+    {% endfor %}
+</div>
+<div class="container">
+    <div class="row">
+        Numar de angajati: {{ num }}
+    </div>
+    <div class="row">
+        Valoare salarii: {{ suma }}
+    </div>
+</div>
+{% endblock %}
