@@ -1,5 +1,6 @@
 from django.db import models
-from django.db.models import SET_NULL
+from django.db.models import SET_NULL, ForeignKey
+
 
 class Employee(models.Model):
     name = models.CharField(max_length=50)
@@ -11,6 +12,7 @@ class Employee(models.Model):
     available = models.BooleanField(default=False)
     # last_time_online = models.DateTimeField(auto_now=True, null=True)
     last_time_online = models.DateTimeField(null=True, blank=True)
+    salary = models.IntegerField(default=2000)
 
     def __str__(self):
         return self.name
